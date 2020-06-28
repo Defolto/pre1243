@@ -30,7 +30,6 @@ user = {
 
 @app.route("/")
 @app.route("/index")
-def main_page():
+def main():
     return jsonify(user)
 
-app.run()
