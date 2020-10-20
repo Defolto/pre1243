@@ -44,8 +44,8 @@ def getPx():
     for akk in akks:
         update_document(records, {"email": akk.get("email")}, {"radius": round((akk.get("radius")+akk.get("growPx")), 2)})
 
-# set_interval(getEvol(), 3600)
-# set_interval(getPx(), 3600)
+set_interval(getEvol(), 3600)
+set_interval(getPx(), 3600)
 
 # Вход в аккаунт
 @app.route("/login", methods=['POST'])
@@ -112,12 +112,10 @@ def upgrade():
 def click():
     newData = request.json
     update_document(records, {"email": newData.get("user_email")}, {"evol": newData.get("user_evol")})
-    getPx()
     return jsonify("okay")
 
 @app.route("/changeColor", methods=['POST'])
 def changeColor():
     newData = request.json
     update_document(records, {"email": newData.get("user_email")}, {"color": newData.get("user_color")})
-    getPx()
     return jsonify("okay")
